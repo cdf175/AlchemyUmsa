@@ -1,4 +1,5 @@
 using AlchemyUmsa.DataAccess;
+using AlchemyUmsa.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer("name=DefaultConection");
 });
+builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
 
 var app = builder.Build();
 
